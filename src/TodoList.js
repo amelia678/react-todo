@@ -17,7 +17,7 @@ render (){
                 <TodoForm 
                     onSubmit={this._onSubmit}
                     term={this.state.term}
-                    onChange= {this._onChange}
+                    onChange= {(event) => this._onChange(event.target.value)}
                 />
                 
                 <div>
@@ -27,9 +27,9 @@ render (){
         )
     }
 
-   _onChange = (event) => {
+   _onChange = userInput => {
        this.setState({
-           term: event.target.value
+           term: userInput
        });
    };
 
