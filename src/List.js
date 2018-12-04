@@ -7,10 +7,8 @@ const List = (props) => {
             return (
             <li 
             key={index}
-            onClick={() => {
-                console.log(`yeah you clicked ${index}`)
-                props.handleClick(index);
-            }}
+            onClick={props.handleClick.bind(null, index)}
+            
             >
             {item}
             </li>
