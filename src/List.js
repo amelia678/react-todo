@@ -3,11 +3,11 @@ import React from 'react';
 const List = (props) => {
     return (
     <ul>
-        {props.items.map( (item, index) => {
+        {props.items.map( item => {
             return (
             <li 
-            key={index}
-            onClick={ () => props.handleClick(index)}
+            key={item.id}
+            onClick={ () => props.handleClick(item.id)}
             //  other option is anonymous function
             >
             {item.name}
