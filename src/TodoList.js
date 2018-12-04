@@ -8,9 +8,28 @@ class TodoList extends Component {
         this.state = {
             term:'',
             items: []
-        }
-    }    
-render (){
+        };
+    }  
+    
+    componentDidMount() {
+        // Make the ajax call!
+        console.log('about to retreive todos');
+        fetch('/todos')
+            .then(r => r.json())
+            .then(todoArray => {
+                console.table(todoArray);
+                this.setState({
+                    items: todoArray.map(todo => todo.name)
+                })
+            })
+            // .then(todoArray => {
+            //     this.setState({items: [...this.state.items, this.todoArray]})
+            // })
+        
+        
+
+}
+    render (){
         return(
             <div>
                 <h1>ToDo App</h1>
