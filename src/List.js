@@ -10,7 +10,7 @@ const List = (props) => {
             onClick={ () => props.handleClick(index)}
             //  other option is anonymous function
             >
-            {item}
+            {item.name}
             </li>
             );
         })}

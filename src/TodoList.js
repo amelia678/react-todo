@@ -8,6 +8,7 @@ class TodoList extends Component {
         this.state = {
             term:'',
             items: []
+            // items expects an array of strings
         };
     }  
     
@@ -18,9 +19,14 @@ class TodoList extends Component {
             .then(r => r.json())
             .then(todoArray => {
                 console.table(todoArray);
+                // version1 : just keep the names
+                // this.setState({
+                //     items: todoArray.map(todo => todo.name)
+                // })
+                // version #2 save the enitre arry of objects
                 this.setState({
-                    items: todoArray.map(todo => todo.name)
-                })
+                    items: todoArray
+                });
             })
             // .then(todoArray => {
             //     this.setState({items: [...this.state.items, this.todoArray]})
