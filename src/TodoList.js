@@ -56,9 +56,15 @@ class TodoList extends Component {
     }
 
     _deleteTodo = (idToDelete) => {
-        this.setState({
+        fetch(`/todos/${idToDelete}`, {
+            method: 'DELETE'
+        })
+        .then(result => {
+            console.log(result)
+            this.setState({
             items: this.state.items.filter(item => item.id !== idToDelete)
         });
+    })
         // let itemsToKeep = [];
         // // keep all the items except the one at 'index'
         // this.state.items.forEach((item, index) => {
@@ -71,8 +77,7 @@ class TodoList extends Component {
         // });
         // this.setState({
         //     items: itemsToKeep
-        // // }
-    }
+        }
 
    _onChange = userInput => {
        this.setState({
@@ -84,11 +89,27 @@ class TodoList extends Component {
     //    puts on brakes
     event.preventDefault();
     //    console.log('submitted!')
-    this.setState({
-        term: "",
-        items: [...this.state.items, this.state.term]
+
+    fetch('/todos', {
+        method: 'POST',
+        body: JSON.stringify({
+            name: this.state.term
+        }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(r => r.json())
+    .then(todo => {
+        console.log(todo);
+        console.log('^ your new todo')
+        this.setState({
+            term: "",
+            items: [...this.state.items, todo]
+        });
     })
    }
 }
+
 
 export default TodoList;
