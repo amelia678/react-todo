@@ -1,5 +1,6 @@
 import React from 'react';
 
+ 
 function TodoForm(props){
     return (
         <form onSubmit={props.onSubmit}>
@@ -9,6 +10,7 @@ function TodoForm(props){
                     placeholder="Enter Todo">
                     </input>
                     <button type="submit">add</button>
+                    <button className="timestamp"type="submit">timestamp</button>
                 </form>
 
 

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import List from './List';
 import TodoForm from './TodoForm';
+import Timestamp from './Timestamp';
 
 class TodoList extends Component {
     constructor(props){
@@ -51,6 +52,9 @@ class TodoList extends Component {
                     handleClick={this._deleteTodo}
                      />
                 </div>
+                <div>
+                    <Timestamp />
+                </div>
             </div>
         )
     }
@@ -89,6 +93,8 @@ class TodoList extends Component {
     //    puts on brakes
     event.preventDefault();
     //    console.log('submitted!')
+
+    
 
     fetch('/todos', {
         method: 'POST',
